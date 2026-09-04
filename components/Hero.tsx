@@ -11,8 +11,8 @@ const ParticleScene = dynamic(
 );
 
 const SOCIALS = [
-  { Icon: Github, href: "https://github.com/priteshkumarsahoo16", label: "GitHub" },
-  { Icon: Linkedin, href: "https://linkedin.com/in/priteshkumarsahoo16", label: "LinkedIn" },
+  { Icon: Github, href: "https://github.com/pritesh123-dev", label: "GitHub" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/pritesh-kumar-sahoo-590a66230/", label: "LinkedIn" },
   { Icon: Mail, href: "mailto:priteshkumarsahoo16@gmail.com", label: "Email" },
 ];
 
@@ -90,7 +90,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.7 }}
           className="flex flex-wrap items-center justify-center gap-2 mb-8"
         >
-          {["Front End Developer", "4+ Years Exp", "React · Next.js · Three.js"].map(
+          {["Frontend-Heavy Full Stack Developer", "4.5+ Years Exp", "React · Next.js · TypeScript · Node.js"].map(
             (tag, i) => (
               <span
                 key={tag}
@@ -113,10 +113,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85 }}
-          className="text-slate-400 text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-10"
+          className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10"
         >
-          Crafting pixel-perfect, high-performance web experiences across
-          fintech, banking, and Web3 — with a 95+ Lighthouse obsession.
+          Building consumer Web3, tier-1 banking/fintech and B2B SaaS products end to end — from
+          DEX swap interfaces to Node.js APIs, with a 95+ Core Web Vitals obsession.
         </motion.p>
 
         {/* CTAs */}

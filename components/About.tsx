@@ -7,28 +7,38 @@ import { RevealText } from "@/components/ui/RevealText";
 import { CountUp } from "@/components/ui/CountUp";
 
 const STATS = [
-  { icon: Briefcase, end: 4, suffix: "+", label: "Years experience", color: "#7C3AED" },
-  { icon: Trophy, end: 90, suffix: "+", label: "Lighthouse score", color: "#22D3EE" },
-  { icon: Zap, end: 2, suffix: "×", label: "Faster with AI tools", color: "#10B981" },
-  { icon: MapPin, end: 3, suffix: "", label: "Companies", color: "#F59E0B" },
+  { icon: Briefcase, end: 4.5, suffix: "+ Yrs", decimals: 1, label: "Full Stack Delivery", color: "#7C3AED" },
+  { icon: Trophy, end: 95, suffix: "+", decimals: 0, label: "Lighthouse & CWV", color: "#22D3EE" },
+  { icon: Zap, end: 30, suffix: "%", decimals: 0, label: "Faster page delivery", color: "#10B981" },
+  { icon: MapPin, end: 6, suffix: "+", decimals: 0, label: "Surfaces on shared UI kit", color: "#F59E0B" },
 ];
 
 const ABOUT_LINES = [
   {
-    text: "Front End Developer with 4+ years shipping responsive, high-performance web applications across fintech, banking, and Web3 products.",
+    text: "Frontend-heavy full stack developer with 4.5+ years shipping consumer Web3, tier-1 banking/fintech and B2B SaaS products end to end — React.js, Next.js and TypeScript on the front, Node.js and Java services behind them.",
     primary: true,
   },
   {
-    text: "I specialize in React.js ecosystems, pixel-perfect UI, and buttery-smooth animations using GSAP and Framer Motion. Obsessed with Core Web Vitals and Lighthouse scores.",
+    text: "I own the whole surface: component architecture, state management, API contracts and release. Recent work spans DEX swap and liquidity interfaces on wagmi/viem, corporate banking dashboards with maker-checker approval flows, and internal npm packages of typed React components used across 6+ product surfaces.",
     primary: false,
   },
   {
-    text: "I use AI dev tools daily — Cursor, GitHub Copilot, and Claude — to ship 2× faster without compromising quality.",
+    text: "Strong on the fundamentals that make the rest hold up — data structures, algorithms and system design — plus a performance habit that has taken real products from LCP 4.8s to 1.6s and Lighthouse 60s to 95+, at WCAG 2.1 AA.",
     primary: false,
   },
 ];
 
-const HIGHLIGHT_SKILLS = ["React.js", "Next.js", "TypeScript", "GSAP", "Framer Motion", "Three.js"];
+const HIGHLIGHT_SKILLS = [
+  "React.js",
+  "Next.js",
+  "TypeScript",
+  "Node.js / Express",
+  "Redux Toolkit",
+  "Tailwind CSS",
+  "wagmi / viem",
+  "AWS S3",
+  "WCAG 2.1 AA",
+];
 
 export default function About() {
   const ref = useRef(null);
@@ -97,7 +107,7 @@ export default function About() {
 
           {/* Stats — CountUp numbers */}
           <div className="grid grid-cols-2 gap-4">
-            {STATS.map(({ icon: Icon, end, suffix, label, color }, i) => (
+            {STATS.map(({ icon: Icon, end, suffix, decimals, label, color }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 32, scale: 0.92 }}
@@ -128,7 +138,7 @@ export default function About() {
                   className="font-heading font-bold text-3xl mb-1"
                   style={{ color }}
                 >
-                  <CountUp end={end} suffix={suffix} duration={1.8} />
+                  <CountUp end={end} suffix={suffix} decimals={decimals} duration={1.8} />
                 </div>
                 <div className="text-xs text-slate-500 font-medium leading-snug">
                   {label}

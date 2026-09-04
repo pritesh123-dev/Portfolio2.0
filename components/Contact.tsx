@@ -33,14 +33,14 @@ const SOCIALS = [
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com/priteshkumarsahoo16",
-    handle: "priteshkumarsahoo16",
+    href: "https://github.com/pritesh123-dev",
+    handle: "pritesh123-dev",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/priteshkumarsahoo16",
-    handle: "priteshkumarsahoo16",
+    href: "https://www.linkedin.com/in/pritesh-kumar-sahoo-590a66230/",
+    handle: "pritesh-kumar-sahoo",
   },
 ];
 
@@ -97,10 +97,9 @@ export default function Contact() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.55 }}
-          className="text-slate-400 text-lg leading-relaxed mb-12 max-w-md mx-auto"
+          className="text-slate-400 text-lg leading-relaxed mb-12 max-w-lg mx-auto"
         >
-          Available for freelance, contract, and full-time opportunities. I
-          respond within 24 hours.
+          Open to Frontend-Heavy Full Stack &amp; Senior Frontend roles (full-time or high-impact contract). Always happy to talk architecture, performance, Web3 interfaces, and frontend scaling.
         </motion.p>
 
         {/* Contact cards */}

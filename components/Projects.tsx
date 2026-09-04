@@ -2,34 +2,47 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Github, Sparkles, Box } from "lucide-react";
+import { ExternalLink, Github, Sparkles, CandlestickChart, UtensilsCrossed } from "lucide-react";
 
 const PROJECTS = [
   {
     id: 1,
     title: "AI Travel Studio",
-    subtitle: "Vibe-coded with Cursor + Claude",
+    subtitle: "Next.js App Router & Streaming AI Agent",
     description:
-      "React / Next.js travel planner where users chat with an AI agent that generates day-by-day itineraries with embedded Mapbox routes and live weather overlays. Features streaming AI responses, drag-and-drop reordering, optimistic UI updates, and cinematic Framer Motion page transitions.",
-    tech: ["Next.js", "React", "Claude API", "Mapbox", "Framer Motion", "TypeScript"],
+      "Next.js travel planner driven by a streaming agent loop over the Claude Messages API — day-by-day itineraries render while the model is still writing them, each day drawn as a Mapbox walking route with live weather deciding which stops land where. Drag-and-drop editing with optimistic writes, version-conflict reconciliation, and an offline-first service worker.",
+    tech: ["Next.js 15", "React 19", "Claude API", "Mapbox GL", "dnd-kit", "Zustand", "TypeScript"],
     accent: "#7C3AED",
     gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
     icon: Sparkles,
-    github: "#",
-    live: "#",
+    github: "https://github.com/pritesh123-dev/ai-travel-studio",
+    live: "https://friendly-frangollo-0caa36.netlify.app/",
   },
   {
     id: 2,
-    title: "3D Interactive Portfolio",
-    subtitle: "Vibe-coded with React Three Fiber",
+    title: "Blackhole DEX",
+    subtitle: "Decentralized Exchange Interface & On-Chain Automation",
     description:
-      "React + Three.js site featuring GPU-instanced particle hero, scroll-locked camera animations, and an in-browser GLSL shader playground. Tuned to a 95+ Lighthouse score using Lenis smooth scroll, code-splitting, and texture compression for buttery 60 FPS interactions.",
-    tech: ["React", "Three.js", "R3F", "GLSL", "Lenis", "TypeScript"],
+      "Production DEX frontend — AMM swap flows with multi-hop routing, slippage and price-impact controls, ERC-20 approvals and gas estimation, liquidity-pool / staking / gauge-voting dashboards, wallet connect and full transaction lifecycle states, with on-chain data indexed through a GraphQL subgraph layer.",
+    tech: ["React", "Vite", "TypeScript", "wagmi / viem", "RainbowKit", "Uniswap SDK", "GraphQL"],
     accent: "#22D3EE",
     gradient: "from-cyan-600/20 via-teal-600/10 to-transparent",
-    icon: Box,
-    github: "#",
-    live: "#",
+    icon: CandlestickChart,
+    github: "https://github.com/pritesh123-dev/Blackhole_Dex_Bot",
+    live: null,
+  },
+  {
+    id: 3,
+    title: "Biriyani Nation",
+    subtitle: "Full-Stack Ordering App on Serverless AWS",
+    description:
+      "Pickup-only ordering platform for a cloud kitchen, built to run on roughly ₹10–150 of AWS a month. Ships an Expo React Native app for Android, an installable React PWA for iOS, and a single-file kitchen dashboard — all against one serverless backend of Lambda, DynamoDB, S3/CloudFront and SNS-based OTP auth.",
+    tech: ["React Native (Expo)", "React PWA", "AWS Lambda", "DynamoDB", "S3 / CloudFront", "TypeScript"],
+    accent: "#F59E0B",
+    gradient: "from-amber-500/20 via-orange-600/10 to-transparent",
+    icon: UtensilsCrossed,
+    github: "https://github.com/pritesh123-dev/Biriyani_Nation_App",
+    live: "https://biriyanination.netlify.app/",
   },
 ];
 
@@ -62,6 +75,7 @@ function TiltCard({ project }: { project: (typeof PROJECTS)[0] }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: "1000px" }}
+      className="h-full"
     >
       <motion.div
         animate={{ rotateX: tilt.x, rotateY: tilt.y }}
@@ -110,20 +124,26 @@ function TiltCard({ project }: { project: (typeof PROJECTS)[0] }) {
             <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <a
                 href={project.github}
-                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.title} on GitHub`}
                 onClick={(e) => e.stopPropagation()}
                 className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-150 cursor-pointer"
               >
                 <Github className="w-4 h-4" />
               </a>
-              <a
-                href={project.live}
-                aria-label="Live demo"
-                onClick={(e) => e.stopPropagation()}
-                className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-150 cursor-pointer"
-              >
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} live demo`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-150 cursor-pointer"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -180,26 +200,38 @@ export default function Projects() {
             Projects
           </span>
           <h2 className="font-heading font-bold text-4xl md:text-5xl mt-3 text-white">
-            Things I've built
+            Things I&apos;ve built
           </h2>
         </motion.div>
 
         {/* Project cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          {PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 32 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.7,
-                delay: i * 0.15,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <TiltCard project={project} />
-            </motion.div>
-          ))}
+          {PROJECTS.map((project, i) => {
+            /* A lone card on the final row is centred at half width instead of
+               hanging off to one side. */
+            const isLonelyLast =
+              i === PROJECTS.length - 1 && PROJECTS.length % 2 === 1;
+
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 32 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.7,
+                  delay: i * 0.15,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className={
+                  isLonelyLast
+                    ? "md:col-span-2 md:max-w-[calc(50%-0.75rem)] md:mx-auto"
+                    : undefined
+                }
+              >
+                <TiltCard project={project} />
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* More on GitHub */}
@@ -210,7 +242,7 @@ export default function Projects() {
           className="text-center mt-10"
         >
           <a
-            href="https://github.com/priteshkumarsahoo16"
+            href="https://github.com/pritesh123-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 border border-white/8 hover:border-white/16 px-5 py-2.5 rounded-xl hover:bg-white/5 cursor-pointer"

@@ -7,17 +7,22 @@ export function CountUp({
   end,
   suffix = "",
   duration = 1.8,
+  decimals = 0,
   className,
 }: {
   end: number;
   suffix?: string;
   duration?: number;
+  decimals?: number;
   className?: string;
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => `${Math.round(v)}${suffix}`);
+  const rounded = useTransform(
+    count,
+    (v) => `${decimals > 0 ? v.toFixed(decimals) : Math.round(v)}${suffix}`
+  );
 
   useEffect(() => {
     if (!isInView) return;

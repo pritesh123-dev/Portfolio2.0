@@ -15,16 +15,20 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Pritesh Kumar Sahoo — Front End Developer",
+  title: "Pritesh Kumar Sahoo — Frontend-Heavy Full Stack Developer",
   description:
-    "Front End Developer with 4+ years of experience shipping pixel-perfect, high-performance web applications across fintech, banking, and Web3. React.js · Next.js · Three.js · TypeScript.",
+    "Frontend-heavy full stack developer with 4.5+ years building consumer Web3, tier-1 banking/fintech and B2B SaaS products end to end. React.js · Next.js · TypeScript · Node.js.",
   keywords: [
-    "Front End Developer",
+    "Full Stack Developer",
+    "Frontend Developer",
     "React Developer",
     "Next.js",
-    "Three.js",
     "TypeScript",
+    "Node.js",
+    "Web3",
+    "DEX Frontend",
     "Fintech",
+    "Banking",
     "Bangalore",
   ],
 };
